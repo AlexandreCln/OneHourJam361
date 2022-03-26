@@ -5,7 +5,7 @@ namespace OneHourJam362
     public class ChickenController : MonoBehaviour
     {
         private float _dirTimer;
-        private float _minSpeed = 0.5f, _maxSpeed = 1.0f;
+        private float _minSpeed = 1f, _maxSpeed = 2.0f;
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private Vector2 _dir;
@@ -22,22 +22,24 @@ namespace OneHourJam362
             _dirTimer -= Time.deltaTime;
             if (_dirTimer <= 0f)
             {
-                _dirTimer = Random.Range(1f, 3f);
-
-                _dir = Random.insideUnitCircle;
-                _speed = Random.Range(_minSpeed, _maxSpeed);
-                _dir.Normalize();
+                float distFromPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+                _dirTimer = Random.Range(.5f, 1f);
+                if (distFromPlayer <= 3)
+                {
+                    _dir = (transform.position - PlayerController.Instance.transform.position).normalized;
+                    _speed = Random.Range(_minSpeed, _maxSpeed);
+                }
+                else
+                {
+                    _dir = Random.insideUnitCircle;
+                    _speed = Random.Range(_minSpeed, _maxSpeed);
+                    _dir.Normalize();
+                }
             }
 
             _sr.sortingOrder = -(int)(transform.position.y * 1000f);
 
-            float distFromPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
         
-            if (distFromPlayer <= 3)
-            {
-                Debug.Log(distFromPlayer);
-                _dir = _dir * -1;
-            }
         }
 
         private void FixedUpdate()
