@@ -5,7 +5,7 @@ namespace OneHourJam362
     public class ChickenController : MonoBehaviour
     {
         private float _dirTimer;
-        private float _minSpeed = 15f, _maxSpeed = 20f;
+        private float _minSpeed = 0.5f, _maxSpeed = 1.0f;
         private Rigidbody2D _rb;
         private SpriteRenderer _sr;
         private Vector2 _dir;
@@ -28,11 +28,14 @@ namespace OneHourJam362
                 _speed = Random.Range(_minSpeed, _maxSpeed);
                 _dir.Normalize();
             }
-
-            _rb.velocity = _dir * Time.deltaTime * _speed;
             transform.localScale = new Vector3(_rb.velocity.x < 0f ? -1f : 1f, 1f, 1f);
 
             _sr.sortingOrder = -(int)(transform.position.y * 1000f);
+        }
+
+        private void FixedUpdate()
+        {
+            _rb.velocity = _dir * _speed;
         }
     }
 
