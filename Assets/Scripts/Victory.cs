@@ -24,7 +24,7 @@ namespace OneHourJam362
             {
                 _chickenCount++;
                 _text.text = $"{_chickenCount} / 10";
-                if (_chickenCount == 1)
+                if (_chickenCount == 10)
                 {
                     IsWon = true;
                     Timer.Instance.IsActive = false;
@@ -34,6 +34,10 @@ namespace OneHourJam362
 
         private void OnTriggerExit2D(Collider2D collision)
         {
+            if (IsWon)
+            {
+                return;
+            }
             if (collision.CompareTag("Chicken"))
             {
                 _chickenCount--;

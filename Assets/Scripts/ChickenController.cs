@@ -19,10 +19,6 @@ namespace OneHourJam362
 
         private void Update()
         {
-            if (Victory.Instance.IsWon)
-            {
-                return;
-            }
             _dirTimer -= Time.deltaTime;
             if (_dirTimer <= 0f)
             {

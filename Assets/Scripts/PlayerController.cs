@@ -26,6 +26,10 @@ namespace OneHourJam362
 
         private void Update()
         {
+            if (Victory.Instance.IsWon)
+            {
+                return;
+            }
             _dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * _speed;
             if (_dir.x < 0)
             {
@@ -39,6 +43,11 @@ namespace OneHourJam362
 
         private void FixedUpdate()
         {
+            if (Victory.Instance.IsWon)
+            {
+                _rb.velocity = Vector2.zero;
+                return;
+            }
             _rb.velocity = _dir;
         }
     }
