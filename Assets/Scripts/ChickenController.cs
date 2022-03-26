@@ -27,7 +27,7 @@ namespace OneHourJam362
                 if (distFromPlayer <= 3)
                 {
                     _dir = (transform.position - PlayerController.Instance.transform.position).normalized;
-                    _speed = Random.Range(_minSpeed, _maxSpeed);
+                    _speed = 3f;
                 }
                 else
                 {

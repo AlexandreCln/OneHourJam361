@@ -12,7 +12,7 @@ namespace OneHourJam362
             Instance = this;
         }
 
-        public bool IsActive { set; private get; }
+        public bool IsActive { set; private get; } = true;
 
         [SerializeField]
         private TMP_Text _text;
