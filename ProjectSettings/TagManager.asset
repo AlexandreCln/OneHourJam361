@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Chicken
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 2569771619
+    locked: 0
+  - name: Victory
+    uniqueID: 3953190849
     locked: 0
   - name: Default
     uniqueID: 0

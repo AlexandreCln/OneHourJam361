@@ -19,6 +19,10 @@ namespace OneHourJam362
 
         private void Update()
         {
+            if (Victory.Instance.IsWon)
+            {
+                return;
+            }
             _dirTimer -= Time.deltaTime;
             if (_dirTimer <= 0f)
             {
@@ -28,7 +32,6 @@ namespace OneHourJam362
                 _speed = Random.Range(_minSpeed, _maxSpeed);
                 _dir.Normalize();
             }
-            transform.localScale = new Vector3(_rb.velocity.x < 0f ? -1f : 1f, 1f, 1f);
 
             _sr.sortingOrder = -(int)(transform.position.y * 1000f);
 
@@ -44,6 +47,14 @@ namespace OneHourJam362
         private void FixedUpdate()
         {
             _rb.velocity = _dir * _speed;
+            if (_dir.x < 0)
+            {
+                _sr.flipX = true;
+            }
+            else if (_dir.x > 0)
+            {
+                _sr.flipX = false;
+            }
         }
     }
 }
