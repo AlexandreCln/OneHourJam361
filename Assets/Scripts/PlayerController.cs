@@ -4,6 +4,13 @@ namespace OneHourJam362
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance { private set; get; }
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         [SerializeField]
         private float _speed;
 
