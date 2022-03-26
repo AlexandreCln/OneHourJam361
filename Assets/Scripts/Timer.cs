@@ -26,7 +26,7 @@ namespace OneHourJam362
                 return;
             }
             _timer += Time.deltaTime;
-            _text.text = $"{_timer:0.00}";
+            _text.text = $"{_timer:0.00}s";
         }
     }
 }
