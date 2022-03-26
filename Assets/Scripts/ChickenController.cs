@@ -31,6 +31,14 @@ namespace OneHourJam362
             transform.localScale = new Vector3(_rb.velocity.x < 0f ? -1f : 1f, 1f, 1f);
 
             _sr.sortingOrder = -(int)(transform.position.y * 1000f);
+
+            float distFromPlayer = Vector2.Distance(transform.position, PlayerController.Instance.transform.position);
+        
+            if (distFromPlayer <= 3)
+            {
+                Debug.Log(distFromPlayer);
+                _dir = _dir * -1;
+            }
         }
 
         private void FixedUpdate()
@@ -38,5 +46,4 @@ namespace OneHourJam362
             _rb.velocity = _dir * _speed;
         }
     }
-
 }
