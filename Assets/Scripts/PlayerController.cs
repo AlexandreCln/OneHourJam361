@@ -17,7 +17,7 @@ namespace OneHourJam362
 
         private void Update()
         {
-            _dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * _speed;
+            _dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * _speed;
         }
 
         private void FixedUpdate()
