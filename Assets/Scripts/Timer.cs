@@ -21,6 +21,10 @@ namespace OneHourJam362
 
         private void Update()
         {
+            if (!IsActive)
+            {
+                return;
+            }
             _timer += Time.deltaTime;
             _text.text = $"{_timer:0.00}";
         }

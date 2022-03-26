@@ -24,9 +24,10 @@ namespace OneHourJam362
             {
                 _chickenCount++;
                 _text.text = $"{_chickenCount} / 10";
-                if (_chickenCount == 10)
+                if (_chickenCount == 1)
                 {
                     IsWon = true;
+                    Timer.Instance.IsActive = false;
                 }
             }
         }
