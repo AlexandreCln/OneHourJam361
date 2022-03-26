@@ -16,15 +16,25 @@ namespace OneHourJam362
 
         private Vector2 _dir;
         private Rigidbody2D _rb;
+        private SpriteRenderer _sr;
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
         {
             _dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized * _speed;
+            if (_dir.x < 0)
+            {
+                _sr.flipX = true;
+            }
+            else if (_dir.x > 0)
+            {
+                _sr.flipX = false;
+            }
         }
 
         private void FixedUpdate()
